@@ -76,6 +76,7 @@ function createTable(){
     cell7.innerHTML=(arrays[0][6]);
     cell8.innerHTML=(arrays[0][7]);
     cell9.innerHTML=(arrays[0][8]);
+    cell5.style.backgroundColor = "orange";
 
     if(mids[0] != val){
         createTableCount();
@@ -102,6 +103,9 @@ function createTable2(){
     for(i=0;i<(arrays[1].length);i++){
         var cell1=row.insertCell(counter);
         cell1.innerHTML=(arrays[1][i]);
+        if(i==1){
+            cell1.style.backgroundColor = "orange";
+        }
         counter++;
     }
 }
@@ -112,6 +116,9 @@ function createTable3(){
     for(i=0;i<arrays[2].length;i++){
         var cell1=row.insertCell(counter);
         cell1.innerHTML=(arrays[2][i]);
+        if(i==0){
+            cell1.style.backgroundColor = "orange";
+        }
         counter++;
     }
     console.log('mids: '+mids)
@@ -126,6 +133,9 @@ function createTable4(start,end){
     for(i=0;i<arrays[3].length;i++){
         var cell1=row.insertCell(counter);
         cell1.innerHTML=(arrays[3][i]);
+        if(i==0){
+            cell1.style.backgroundColor = "orange";
+        }
         counter++;
     }
 
