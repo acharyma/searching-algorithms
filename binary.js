@@ -7,13 +7,16 @@ var array = [1,2,3,4,5,6,7,8,9];
 var arrays = [];
 var arrays_index=0;
 var mids=[];
-var val = 9;
+var val = 4;
 
 function binary_search(arr,min,max,value){
-    addArrays(0,9)
+    addArrays(0,9);
     while(min<=max){
+        console.log("min:"+min);
+        console.log("max:"+max);
         mid = Math.floor((max+min)/2);
-        mids.push(mid)
+        console.log("mid:"+mid);
+        mids.push(arr[mid]);
         if(arr[mid]>value){
             max = mid-1;
             if(max==9){
@@ -74,11 +77,26 @@ function createTable(){
     cell8.innerHTML=(arrays[0][7]);
     cell9.innerHTML=(arrays[0][8]);
 
-    if(mids[1] == val){
-        createTable2()
+    if(mids[0] != val){
+        createTableCount();
     }
 }
+
+function createTableCount(){
+    length = arrays.length;
+    if(length>=2){
+        createTable2();
+    }
+    if(length>=3){
+        createTable3();
+    }
+    if(length>=4){
+        createTable4();
+    }
+}
+
 function createTable2(){
+    console.log("hit");
     var counter=0;
     var row = table2.insertRow(0);
     for(i=0;i<(arrays[1].length);i++){
@@ -86,10 +104,8 @@ function createTable2(){
         cell1.innerHTML=(arrays[1][i]);
         counter++;
     }
-    if(mids[1] != val){
-        createTable3()
-    }
 }
+
 function createTable3(){
     var counter=0;
     var row = table3.insertRow(0);
@@ -100,10 +116,7 @@ function createTable3(){
     }
     console.log('mids: '+mids)
     console.log('mids:'+mids[2]);
-    console.log('val'+val)
-    if(mids[2] != val){
-        createTable4()
-    }
+    console.log('val'+val);
 
 }
 
@@ -118,9 +131,10 @@ function createTable4(start,end){
 
 }
 
-var answer = binary_search(array,0,9,val);
+var answer = binary_search(array,0,8,val);
 createTable();
 console.log(arrays);
+console.log(arrays.length);
 console.log(mids);
 
 document.getElementById("search").innerHTML = "The number "+val +" is found at index: "+answer
