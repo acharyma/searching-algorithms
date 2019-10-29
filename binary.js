@@ -3,11 +3,16 @@ var table2 = document.getElementById("array_table_one");
 var table3 = document.getElementById("array_table_two");
 var table4 = document.getElementById("array_table_three");
 
+var compare1 = document.getElementById("compare-one");
+var compare2 = document.getElementById("compare-two");
+var compare3 = document.getElementById("compare-three");
+var compare4 = document.getElementById("compare-four");
+
 var array = [1,2,3,4,5,6,7,8,9];
 var arrays = [];
 var arrays_index=0;
 var mids=[];
-var val = 4;
+var val = 9;
 
 function binary_search(arr,min,max,value){
     addArrays(0,9);
@@ -77,6 +82,9 @@ function createTable(){
     cell8.innerHTML=(arrays[0][7]);
     cell9.innerHTML=(arrays[0][8]);
     cell5.style.backgroundColor = "orange";
+    compare1.innerHTML = "Compare: Mid = " + mids[0] + " Value = "+val;
+    //DO STUFF
+
 
     if(mids[0] != val){
         createTableCount();
@@ -108,6 +116,8 @@ function createTable2(){
         }
         counter++;
     }
+    compare2.innerHTML = "Compare: Mid = " + mids[1] + " Value = "+val;
+    //DO STUFF
 }
 
 function createTable3(){
@@ -121,9 +131,8 @@ function createTable3(){
         }
         counter++;
     }
-    console.log('mids: '+mids)
-    console.log('mids:'+mids[2]);
-    console.log('val'+val);
+    compare3.innerHTML = "Compare: Mid = " + mids[2] + " Value = "+val;
+    //DO STUFF
 
 }
 
@@ -138,7 +147,8 @@ function createTable4(start,end){
         }
         counter++;
     }
-
+    compare4.innerHTML = "Compare: Mid = " + mids[3] + " Value = "+val;
+    //DO STUFF
 }
 
 var answer = binary_search(array,0,8,val);
@@ -147,4 +157,5 @@ console.log(arrays);
 console.log(arrays.length);
 console.log(mids);
 
-document.getElementById("search").innerHTML = "The number "+val +" is found at index: "+answer
+document.getElementById("search").innerHTML = "Looking for "+val+" in the array:"
+document.getElementById("found").innerHTML = "The number "+val +" is found at index: "+answer
