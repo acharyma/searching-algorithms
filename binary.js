@@ -14,6 +14,10 @@ var arrays_index=0;
 var mids=[];
 var val = 9;
 
+var show=0;
+var where=1;
+var notFound=0;
+
 function binary_search(arr,min,max,value){
     addArrays(0,9);
     while(min<=max){
@@ -59,6 +63,7 @@ function addArrays(start,end){
     }
     arrays[arrays_index] = temp;
     arrays_index += 1;
+    where += 1;
 }
 
 function createTable(){
@@ -88,6 +93,49 @@ function createTable(){
 
     if(mids[0] != val){
         createTableCount();
+    }
+}
+
+function hideAll(){
+    table2.style.visibility = "hidden";
+    table3.style.visibility = "hidden";
+    table4.style.visibility = "hidden";
+    compare2.style.visibility = "hidden";
+    compare3.style.visibility = "hidden";
+    compare4.style.visibility = "hidden";
+    document.getElementById("found").style.display = "none";
+    document.getElementById("not-found").style.display = "none";
+    if(mids[0] == val){
+        document.getElementById("found").style.display = "block";
+    }
+    else if(mids[3] != val){
+        notFound = 1;
+    }
+}
+
+function reveal(){
+    if(show == 0){
+        table2.style.visibility = "visible";
+        compare2.style.visibility = "visible";
+        show+=1;
+    }
+    else if(show==1){
+        table3.style.visibility = "visible";
+        compare3.style.visibility = "visible";
+        show+=1;
+    }
+    else if(show==2){
+        table4.style.visibility = "visible";
+        compare4.style.visibility = "visible";
+        show+=1;
+    }
+    console.log("where: "+where)
+    console.log("show+1: "+(show+2))
+    if(where == (show+2)){
+        document.getElementById("found").style.display = "block";
+    }
+    if(notFound == 1 && (show+2)>4){
+        document.getElementById("not-found").style.display = "block";
     }
 }
 
@@ -156,6 +204,8 @@ createTable();
 console.log(arrays);
 console.log(arrays.length);
 console.log(mids);
+hideAll();
 
 document.getElementById("search").innerHTML = "Looking for "+val+" in the array:"
-document.getElementById("found").innerHTML = "The number "+val +" is found at index: "+answer
+document.getElementById("found").innerHTML = "The number "+val +" is FOUND at index: "+answer
+document.getElementById("not-found").innerHTML = "The number "+val +" is NOT IN THE ARRAY!"
