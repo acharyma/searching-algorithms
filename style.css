@@ -1,19 +1,38 @@
 .table-array{
     width: 450px;
+    margin-left: 50px;
 }
 .table-array-one{
     width: 200px;
+    margin-left: 50px;
 }
 .table-array-two{
     width: 100px;
+    margin-left: 50px;
 }
 .table-array-three{
     width:50px;
+    margin-left: 50px;
 }
+
+.compare-one{
+  margin-left: 50px;
+}
+.compare-two{
+  margin-left: 50px;
+}
+.compare-three{
+  margin-left: 50px;
+}
+
 body {
     background-color:lightblue;
     font: 300 100.1% "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
 }
+/* .second-page{
+  background-color: blue;
+} */
+
 #holder {
     height: 480px;
     left: 50%;

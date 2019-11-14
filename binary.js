@@ -206,6 +206,10 @@ console.log(arrays.length);
 console.log(mids);
 hideAll();
 
-document.getElementById("search").innerHTML = "Looking for "+val+" in the array:"
-document.getElementById("found").innerHTML = "The number "+val +" is FOUND at index: "+answer
-document.getElementById("not-found").innerHTML = "The number "+val +" is NOT IN THE ARRAY!"
+document.getElementById("search").innerHTML = ("Looking for "+val+" in the array:".bold());
+document.getElementById("search").style.fontWeight = 'bold';
+document.getElementById("search").style.fontSize = 'xx-large';
+document.getElementById("search").style.textDecoration = "overline";
+document.getElementById("search").style.fontFamily = 'Impact,Charcoal,sans-serif';
+document.getElementById("found").innerHTML = "The number "+val +" is FOUND at index: "+answer;
+document.getElementById("not-found").innerHTML = "The number "+val +" is NOT IN THE ARRAY!";

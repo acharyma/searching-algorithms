@@ -80,31 +80,33 @@ window.onload = function () {
         shapes = [  r.ellipse(190, 100, 20, 20),
                      r.ellipse(300, 175, 20, 20),
                      r.ellipse(190, 250, 20, 20),
-                    r.ellipse(450, 100, 20, 20),
+                    r.ellipse(300, 100, 20, 20),
                     r.ellipse(600, 100, 20, 20),
                     r.ellipse(600, 300, 20, 20),
                     r.ellipse(600, 50, 20, 20),
                     r.ellipse(600, 150, 20, 20),
                     r.ellipse(600, 200, 20, 20)
                 ];
-
-    //DO STUFF
-
-    r.text(190,100,"a",20,20).attr({fill:'#000000'});
-    r.text(300,175,"b",20,20).attr({fill:'#000000'});
-    r.text(190,250,"c",20,20).attr({fill:'#000000'});
-    r.text(450,100,"d",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
-    r.text(600,100,"e",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
-    r.text(600,300,"f",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
-    r.text(600,50,"g",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
-    r.text(600,150,"h",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
-    r.text(600,200,"i",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
+        text = [ r.text(190,100,"a",20,20),
+                r.text(300,175,"b",20,20),
+                r.text(190,250,"c",20,20),
+                r.text(300,100,"d",20,20),
+                r.text(600,100,"e",20,20),
+                r.text(600,300,"f",20,20),
+                r.text(600,50,"g",20,20),
+                r.text(600,150,"h",20,20),
+                r.text(600,200,"i",20,20)
+        ];
 
     for (var i = 0, ii = shapes.length; i < ii; i++) {
         var color = Raphael.getColor();
-        shapes[i].attr({fill: color, stroke: color, "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
-        shapes[i].drag(move, dragger, up);
+        shapes[i].attr({fill: color, stroke: color, "fill-opacity": 100, "stroke-width": 2});
     }
+
+    for (var i = 0, ii = text.length; i<ii; i++){
+        text[i].attr({fill:'#000000', stroke:"#000000", "fill-opacity": 100, "stroke-width": 1});
+    }
+
     console.log(shapes)
     connections.push(r.connection(shapes[0], shapes[1], "#000"));
     connections.push(r.connection(shapes[1], shapes[2], "#000"));
