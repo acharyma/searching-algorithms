@@ -105,7 +105,7 @@ window.onload = function () {
                 ];
 
     for (var i = 0, ii = shapes.length; i < ii; i++) {
-        //DO STUFF: GET IT TO MOVE
+        //DO STUFF: GET IT TO MOVE TOMORROW
         r.text(190,100,"a",20,20).attr({fill:'#000000',stroke: color, "fill-opacity": 100, "stroke-width": 2, cursor: "move"})
     }
 
