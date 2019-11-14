@@ -1,19 +1,3 @@
-// var g = new Dracula.Graph();
-// g.addEdge("strawberry", "cherry");
-// g.addEdge("strawberry", "apple");
-// g.addEdge("strawberry", "tomato");
-//
-// g.addEdge("tomato", "apple");
-// g.addEdge("tomato", "kiwi");
-//
-// g.addEdge("cherry", "apple");
-// g.addEdge("cherry", "kiwi");
-//
-// var layouter = new Dracula.Layout.Spring(g);
-// layouter.layout();
-//
-// var renderer = new Dracula.Renderer.Raphael('canvas', g, 400, 300);
-// renderer.draw();
 Raphael.fn.connection = function (obj1, obj2, line, bg) {
     if (obj1.line && obj1.from && obj1.to) {
         line = obj1;
@@ -104,16 +88,21 @@ window.onload = function () {
                     r.ellipse(600, 200, 20, 20)
                 ];
 
-    for (var i = 0, ii = shapes.length; i < ii; i++) {
-        //DO STUFF: GET IT TO MOVE TOMORROW
-        r.text(190,100,"a",20,20).attr({fill:'#000000',stroke: color, "fill-opacity": 100, "stroke-width": 2, cursor: "move"})
-    }
+    //DO STUFF
 
+    r.text(190,100,"a",20,20).attr({fill:'#000000'});
+    r.text(300,175,"b",20,20).attr({fill:'#000000'});
+    r.text(190,250,"c",20,20).attr({fill:'#000000'});
+    r.text(450,100,"d",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
+    r.text(600,100,"e",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
+    r.text(600,300,"f",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
+    r.text(600,50,"g",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
+    r.text(600,150,"h",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
+    r.text(600,200,"i",20,20).attr({fill:'#000000', "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
 
     for (var i = 0, ii = shapes.length; i < ii; i++) {
         var color = Raphael.getColor();
         shapes[i].attr({fill: color, stroke: color, "fill-opacity": 100, "stroke-width": 2, cursor: "move"});
-        // shapes[i].attr({text: "a", curson:"move"});
         shapes[i].drag(move, dragger, up);
     }
     console.log(shapes)
