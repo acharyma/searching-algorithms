@@ -1,6 +1,7 @@
 var current_counter=1;
 var prepost = [];
 var i =1;
+
 for(i=1;i<10;i++){
   prepost.push([i,0,0]);
 }
@@ -191,6 +192,13 @@ class Graph {
   // all the adjacent vertex of the vertex with which it is called
   DFSUtil(vert, visited){
       visited[vert] = true;
+      var j;
+      for (j=0;j<8;j++){
+        if(dict[j].key == vert){
+          dict[j].value[0] = current_counter;
+          current_counter++;
+        }
+      }
       console.log(vert);
 
       var get_neighbours = this.AdjList.get(vert);
@@ -199,6 +207,13 @@ class Graph {
           var get_elem = get_neighbours[i];
           if (!visited[get_elem])
               this.DFSUtil(get_elem, visited);
+      }
+      var k;
+      for (k=0;k<8;k++){
+        if(dict[k].key == vert){
+          dict[k].value[1] = current_counter;
+          current_counter++;
+        }
       }
   }
 
@@ -222,9 +237,52 @@ g.addEdge('5','6');
 g.addEdge('3','5');
 g.addEdge('3','7');
 g.addEdge('3','8');
+g.addEdge('7','8');
 
 g.printGraph();
 
+var dict = []; // create an empty array
+
+dict.push({
+    key:   vertices[0],
+    value: [0,0]
+  });
+  dict.push({
+      key:   vertices[1],
+      value: [0,0]
+  });
+  dict.push({
+      key:   vertices[2],
+      value: [0,0]
+  });
+  dict.push({
+      key:   vertices[3],
+      value: [0,0]
+  });
+  dict.push({
+      key:   vertices[4],
+      value: [0,0]
+  });
+  dict.push({
+      key:   vertices[5],
+      value: [0,0]
+  });
+  dict.push({
+      key:   vertices[6],
+      value: [0,0]
+  });
+  dict.push({
+      key:   vertices[7],
+      value: [0,0]
+  });
+
+
+console.log(dict);
+
+console.log(typeof(dict[0].key));
+
 
 console.log("DFS");
-g.dfs("1")
+g.dfs("1");
+
+console.log(dict);
