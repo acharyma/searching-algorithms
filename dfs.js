@@ -171,7 +171,7 @@ class Graph {
 }
 
 var g = new Graph(8);
-var vertices = ['1','2','3','4','5','6','7','8','9'];
+var vertices = ['1','2','3','4','5','6','7','8'];
 
 // adding vertices
 for (var i = 0; i < vertices.length; i++) {
