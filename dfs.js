@@ -1,3 +1,5 @@
+var current_counter=1;
+
 Raphael.fn.connection = function (obj1, obj2, line, bg) {
     if (obj1.line && obj1.from && obj1.to) {
         line = obj1;
@@ -168,6 +170,32 @@ class Graph {
         console.log(i + " -> " + conc);
     }
   }
+
+  //// Main DFS method
+  dfs(startingNode){
+
+      var visited = [];
+      for (var i = 0; i < this.noOfVertices; i++)
+          visited[i] = false;
+
+      this.DFSUtil(startingNode, visited);
+  }
+
+  // Recursive function which process and explore
+  // all the adjacent vertex of the vertex with which it is called
+  DFSUtil(vert, visited){
+      visited[vert] = true;
+      console.log(vert);
+
+      var get_neighbours = this.AdjList.get(vert);
+
+      for (var i in get_neighbours) {
+          var get_elem = get_neighbours[i];
+          if (!visited[get_elem])
+              this.DFSUtil(get_elem, visited);
+      }
+  }
+
 }
 
 var g = new Graph(8);
@@ -192,4 +220,5 @@ g.addEdge('3','8');
 g.printGraph();
 
 
-// function dfs()
+console.log("DFS");
+g.dfs("1")
