@@ -77,25 +77,25 @@ window.onload = function () {
         },
         r = Raphael("holder", 640, 480),
         connections = [],
-        shapes = [  r.ellipse(190, 100, 20, 20),
+        shapes = [  r.ellipse(190, 175, 20, 20),
                      r.ellipse(300, 175, 20, 20),
                      r.ellipse(190, 250, 20, 20),
                     r.ellipse(300, 100, 20, 20),
-                    r.ellipse(600, 100, 20, 20),
-                    r.ellipse(600, 300, 20, 20),
-                    r.ellipse(600, 50, 20, 20),
-                    r.ellipse(600, 150, 20, 20),
-                    r.ellipse(600, 200, 20, 20)
+                    r.ellipse(800, 100, 20, 20),
+                    r.ellipse(300, 250, 20, 20),
+                    r.ellipse(500, 100, 20, 20),
+                    r.ellipse(500, 200, 20, 20),
+                    r.ellipse(300, 350, 20, 20)
                 ];
-        text = [ r.text(190,100,"a",20,20),
-                r.text(300,175,"b",20,20),
-                r.text(190,250,"c",20,20),
-                r.text(300,100,"d",20,20),
-                r.text(600,100,"e",20,20),
-                r.text(600,300,"f",20,20),
-                r.text(600,50,"g",20,20),
-                r.text(600,150,"h",20,20),
-                r.text(600,200,"i",20,20)
+        text = [ r.text(300,100,"1",20,20),
+                r.text(300,175,"3",20,20),
+                r.text(190,250,"4",20,20),
+                r.text(190,175,"2",20,20),
+                r.text(800,100,"5",20,20),
+                r.text(300,250,"5",20,20),
+                r.text(500,100,"7",20,20),
+                r.text(500,200,"8",20,20),
+                r.text(300,350,"6",20,20)
         ];
 
     for (var i = 0, ii = shapes.length; i < ii; i++) {
@@ -104,16 +104,92 @@ window.onload = function () {
     }
 
     for (var i = 0, ii = text.length; i<ii; i++){
-        text[i].attr({fill:'#000000', stroke:"#000000", "fill-opacity": 100, "stroke-width": 1});
+        text[i].attr({fill:'#000000', "fill-opacity": 100});
     }
 
     console.log(shapes)
     connections.push(r.connection(shapes[0], shapes[1], "#000"));
     connections.push(r.connection(shapes[1], shapes[2], "#000"));
     connections.push(r.connection(shapes[1], shapes[3], "#000"));
-    connections.push(r.connection(shapes[1], shapes[4], "#000"));
     connections.push(r.connection(shapes[1], shapes[5], "#000"));
     connections.push(r.connection(shapes[1], shapes[6], "#000"));
     connections.push(r.connection(shapes[1], shapes[7], "#000"));
-    connections.push(r.connection(shapes[1], shapes[8], "#000"));
+    connections.push(r.connection(shapes[0], shapes[3], "#000"));
+    connections.push(r.connection(shapes[2], shapes[5], "#000"));
+    connections.push(r.connection(shapes[0], shapes[2], "#000"));
+    connections.push(r.connection(shapes[0], shapes[5], "#000"));
+    connections.push(r.connection(shapes[5], shapes[8], "#000"));
+    connections.push(r.connection(shapes[6], shapes[7], "#000"));
 };
+
+
+// create a graph class
+class Graph {
+    // defining vertex array and
+    // adjacent list
+    constructor(noOfVertices){
+        this.noOfVertices = noOfVertices;
+        this.AdjList = new Map();
+    }
+
+    addVertex(v){
+      // initialize the adjacent list with a
+      // null array
+      this.AdjList.set(v, []);
+    }
+    addEdge(v, w){
+      // get the list for vertex v and put the
+      // vertex w denoting edge between v and w
+      this.AdjList.get(v).push(w);
+
+      // Since graph is undirected,
+      // add an edge from w to v also
+      this.AdjList.get(w).push(v);
+    }
+
+  // Prints the vertex and adjacency list
+  printGraph(){
+    // get all the vertices
+    var get_keys = this.AdjList.keys();
+
+    // iterate over the vertices
+    for (var i of get_keys){
+        // great the corresponding adjacency list
+        // for the vertex
+        var get_values = this.AdjList.get(i);
+        var conc = "";
+
+        // iterate over the adjacency list
+        // concatenate the values into a string
+        for (var j of get_values)
+            conc += j + " ";
+
+        // print the vertex and its adjacency list
+        console.log(i + " -> " + conc);
+    }
+  }
+}
+
+var g = new Graph(8);
+var vertices = ['1','2','3','4','5','6','7','8','9'];
+
+// adding vertices
+for (var i = 0; i < vertices.length; i++) {
+    g.addVertex(vertices[i]);
+}
+
+g.addEdge('1','2');
+g.addEdge('1','3');
+g.addEdge('2','3');
+g.addEdge('2','4');
+g.addEdge('2','5');
+g.addEdge('4','5');
+g.addEdge('5','6');
+g.addEdge('3','5');
+g.addEdge('3','7');
+g.addEdge('3','8');
+
+g.printGraph();
+
+
+// function dfs()
