@@ -1,4 +1,5 @@
 var current_counter=1;
+var reveal_counter=2;
 var prepost = [];
 var i =1;
 
@@ -70,7 +71,7 @@ window.onload = function () {
         console.log("hit");
         this.ox = this.type == "rect" ? this.attr("x") : this.attr("cx");
         this.oy = this.type == "rect" ? this.attr("y") : this.attr("cy");
-        // this.animate({"fill-opacity": .2}, 500); GET RID
+        this.animate({"fill-opacity": .2}, 500);
     },
         move = function (dx, dy) {
             var att = this.type == "rect" ? {x: this.ox + dx, y: this.oy + dy} : {cx: this.ox + dx, cy: this.oy + dy};
@@ -82,7 +83,7 @@ window.onload = function () {
         },
         up = function () { //GET RID
           console.log("real hit")
-            // this.animate({"fill-opacity": 0}, 500);
+            this.animate({"fill-opacity": 0}, 500);
         },
         r = Raphael("holder", 640, 480),
         connections = [],
@@ -286,3 +287,123 @@ console.log("DFS");
 g.dfs("1");
 
 console.log(dict);
+
+var first=document.getElementById("first");
+first.innerHTML += dict[0].value[0] + ', ';
+
+var second=document.getElementById("second");
+second.innerHTML += dict[1].value[0] + ', ';
+
+var third=document.getElementById("third");
+third.innerHTML += dict[2].value[0] + ', ';
+
+var fourth=document.getElementById("fourth");
+fourth.innerHTML += dict[3].value[0] + ', ';
+
+var fifth=document.getElementById("fifth");
+fifth.innerHTML += dict[4].value[0] + ', ';
+
+var sixth=document.getElementById("sixth");
+sixth.innerHTML += dict[5].value[0] + ', ';
+
+var seventh=document.getElementById("seventh");
+seventh.innerHTML += dict[6].value[0] + ', ';
+
+var eigth=document.getElementById("eigth");
+eigth.innerHTML += dict[7].value[0] + ', ';
+
+function hideAll(){
+  second.style.visibility = "hidden";
+  third.style.visibility = "hidden";
+  fourth.style.visibility = "hidden";
+  fifth.style.visibility = "hidden";
+  sixth.style.visibility = "hidden";
+  seventh.style.visibility = "hidden";
+  eigth.style.visibility = "hidden";
+}
+
+function addPost(){
+  first.innerHTML += dict[0].value[1] + ']';
+  second.innerHTML += dict[1].value[1] + ']';
+  third.innerHTML += dict[2].value[1] + ']';
+  fourth.innerHTML += dict[3].value[1] + ']';
+  fifth.innerHTML += dict[4].value[1] + ']';
+  sixth.innerHTML += dict[5].value[1] + ']';
+  seventh.innerHTML += dict[6].value[1] + ']';
+  eigth.innerHTML += dict[7].value[1] + ']';
+}
+
+function reveal(){
+  for (k=0;k<8;k++){
+      if(dict[k].value[0] == reveal_counter){
+        reveal_counter++;
+        console.log("REVEAL:" + reveal_counter);
+        if(k==1){
+          second.style.visibility = "visible";
+          break;
+        }
+        if(k==2){
+          third.style.visibility="visible";
+          break;
+        }
+        if(k==3){
+          fourth.style.visibility="visible";
+          break;
+        }
+        if(k==4){
+          fifth.style.visibility="visible";
+          break;
+        }
+        if(k==5){
+          sixth.style.visibility="visible";
+          break;
+        }
+        if(k==6){
+          seventh.style.visibility="visible";
+          break;
+        }
+        if(k==7){
+          eigth.style.visibility="visible";
+          break;
+        }
+      }
+      else if(dict[k].value[1] == reveal_counter){
+        reveal_counter++;
+        if(k==0){
+          first.innerHTML += dict[0].value[1] + ']';
+          break;
+        }
+        if(k==1){
+          second.innerHTML += dict[1].value[1] + ']';
+          break;
+        }
+        if(k==2){
+          third.innerHTML += dict[2].value[1] + ']';
+          break;
+        }
+        if(k==3){
+          fourth.innerHTML += dict[3].value[1] + ']';
+          break;
+        }
+        if(k==4){
+          fifth.innerHTML += dict[4].value[1] + ']';
+          break;
+        }
+        if(k==5){
+          sixth.innerHTML += dict[5].value[1] + ']';
+          break;
+        }
+        if(k==6){
+          seventh.innerHTML += dict[6].value[1] + ']';
+          break;
+        }
+        if(k==7){
+          eigth.innerHTML += dict[7].value[1] + ']';
+          break;
+        }
+      }
+    }
+}
+
+
+hideAll()
