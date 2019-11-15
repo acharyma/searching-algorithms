@@ -1,4 +1,10 @@
 var current_counter=1;
+var prepost = [];
+var i =1;
+for(i=1;i<10;i++){
+  prepost.push([i,0,0]);
+}
+console.log(prepost)
 
 Raphael.fn.connection = function (obj1, obj2, line, bg) {
     if (obj1.line && obj1.from && obj1.to) {
