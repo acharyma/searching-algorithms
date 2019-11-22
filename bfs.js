@@ -132,6 +132,61 @@ window.onload = function () {
     connections.push(r.connection(shapes[6], shapes[7], "#000"));
 };
 
+// Queue class
+class Queue
+{
+    // Array is used to implement a Queue
+    constructor()
+    {
+        this.items = [];
+    }
+    // enqueue function
+    enqueue(element)
+    {
+    	// adding element to the queue
+    	this.items.push(element);
+    }
+
+    // dequeue function
+    dequeue()
+    {
+    	// removing element from the queue
+    	// returns underflow when called
+    	// on empty queue
+    	if(this.isEmpty())
+    		return "Underflow";
+    	return this.items.shift();
+    }
+
+    // front function
+    front()
+    {
+    	// returns the Front element of
+    	// the queue without removing it.
+    	if(this.isEmpty())
+    		return "No elements in Queue";
+    	return this.items[0];
+    }
+
+    // isEmpty function
+    isEmpty()
+    {
+    	// return true if the queue is empty.
+    	return this.items.length == 0;
+    }
+    // printQueue function
+    printQueue()
+    {
+        var str = "";
+        for(var i = 0; i < this.items.length; i++)
+            str += this.items[i] +" ";
+        return str;
+    }
+}
+
+
+
+
 
 // create a graph class
 class Graph {
@@ -179,42 +234,42 @@ class Graph {
     }
   }
 
-  //// Main DFS method
-  dfs(startingNode){
+  // function to performs BFS
+  bfs(startingNode) {
 
+      // create a visited array
       var visited = [];
       for (var i = 0; i < this.noOfVertices; i++)
           visited[i] = false;
 
-      this.DFSUtil(startingNode, visited);
-  }
+      // Create an object for queue
+      var q = new Queue();
 
-  // Recursive function which process and explore
-  // all the adjacent vertex of the vertex with which it is called
-  DFSUtil(vert, visited){
-      visited[vert] = true;
-      var j;
-      for (j=0;j<8;j++){
-        if(dict[j].key == vert){
-          dict[j].value[0] = current_counter;
-          current_counter++;
-        }
-      }
-      console.log(vert);
+      // add the starting node to the queue
+      visited[startingNode] = true;
+      q.enqueue(startingNode);
 
-      var get_neighbours = this.AdjList.get(vert);
+      // loop until queue is element
+      while (!q.isEmpty()) {
+          // get the element from the queue
+          var getQueueElement = q.dequeue();
 
-      for (var i in get_neighbours) {
-          var get_elem = get_neighbours[i];
-          if (!visited[get_elem])
-              this.DFSUtil(get_elem, visited);
-      }
-      var k;
-      for (k=0;k<8;k++){
-        if(dict[k].key == vert){
-          dict[k].value[1] = current_counter;
-          current_counter++;
-        }
+          // passing the current vertex to callback funtion
+          console.log("HIT"+getQueueElement);
+
+          // get the adjacent list for current vertex
+          var get_List = this.AdjList.get(getQueueElement);
+
+          // loop through the list and add the element to the
+          // queue if it is not processed yet
+          for (var i in get_List) {
+              var neigh = get_List[i];
+
+              if (!visited[neigh]) {
+                  visited[neigh] = true;
+                  q.enqueue(neigh);
+              }
+          }
       }
   }
 
@@ -241,168 +296,5 @@ g.addEdge('3','8');
 g.addEdge('7','8');
 
 g.printGraph();
-
-var dict = []; // create an empty array
-
-dict.push({
-    key:   vertices[0],
-    value: [0,0]
-  });
-  dict.push({
-      key:   vertices[1],
-      value: [0,0]
-  });
-  dict.push({
-      key:   vertices[2],
-      value: [0,0]
-  });
-  dict.push({
-      key:   vertices[3],
-      value: [0,0]
-  });
-  dict.push({
-      key:   vertices[4],
-      value: [0,0]
-  });
-  dict.push({
-      key:   vertices[5],
-      value: [0,0]
-  });
-  dict.push({
-      key:   vertices[6],
-      value: [0,0]
-  });
-  dict.push({
-      key:   vertices[7],
-      value: [0,0]
-  });
-
-
-console.log(dict);
-
-console.log(typeof(dict[0].key));
-
-
-console.log("DFS");
-g.dfs("1");
-
-console.log(dict);
-
-var first=document.getElementById("first");
-first.innerHTML += dict[0].value[0] + ', ';
-
-var second=document.getElementById("second");
-second.innerHTML += dict[1].value[0] + ', ';
-
-var third=document.getElementById("third");
-third.innerHTML += dict[2].value[0] + ', ';
-
-var fourth=document.getElementById("fourth");
-fourth.innerHTML += dict[3].value[0] + ', ';
-
-var fifth=document.getElementById("fifth");
-fifth.innerHTML += dict[4].value[0] + ', ';
-
-var sixth=document.getElementById("sixth");
-sixth.innerHTML += dict[5].value[0] + ', ';
-
-var seventh=document.getElementById("seventh");
-seventh.innerHTML += dict[6].value[0] + ', ';
-
-var eigth=document.getElementById("eigth");
-eigth.innerHTML += dict[7].value[0] + ', ';
-
-function hideAll(){
-  second.style.visibility = "hidden";
-  third.style.visibility = "hidden";
-  fourth.style.visibility = "hidden";
-  fifth.style.visibility = "hidden";
-  sixth.style.visibility = "hidden";
-  seventh.style.visibility = "hidden";
-  eigth.style.visibility = "hidden";
-}
-
-function addPost(){
-  first.innerHTML += dict[0].value[1] + ']';
-  second.innerHTML += dict[1].value[1] + ']';
-  third.innerHTML += dict[2].value[1] + ']';
-  fourth.innerHTML += dict[3].value[1] + ']';
-  fifth.innerHTML += dict[4].value[1] + ']';
-  sixth.innerHTML += dict[5].value[1] + ']';
-  seventh.innerHTML += dict[6].value[1] + ']';
-  eigth.innerHTML += dict[7].value[1] + ']';
-}
-
-function reveal(){
-  for (k=0;k<8;k++){
-      if(dict[k].value[0] == reveal_counter){
-        reveal_counter++;
-        if(k==1){
-          second.style.visibility = "visible";
-          break;
-        }
-        if(k==2){
-          third.style.visibility="visible";
-          break;
-        }
-        if(k==3){
-          fourth.style.visibility="visible";
-          break;
-        }
-        if(k==4){
-          fifth.style.visibility="visible";
-          break;
-        }
-        if(k==5){
-          sixth.style.visibility="visible";
-          break;
-        }
-        if(k==6){
-          seventh.style.visibility="visible";
-          break;
-        }
-        if(k==7){
-          eigth.style.visibility="visible";
-          break;
-        }
-      }
-      else if(dict[k].value[1] == reveal_counter){
-        reveal_counter++;
-        if(k==0){
-          first.innerHTML += dict[0].value[1] + ']';
-          break;
-        }
-        if(k==1){
-          second.innerHTML += dict[1].value[1] + ']';
-          break;
-        }
-        if(k==2){
-          third.innerHTML += dict[2].value[1] + ']';
-          break;
-        }
-        if(k==3){
-          fourth.innerHTML += dict[3].value[1] + ']';
-          break;
-        }
-        if(k==4){
-          fifth.innerHTML += dict[4].value[1] + ']';
-          break;
-        }
-        if(k==5){
-          sixth.innerHTML += dict[5].value[1] + ']';
-          break;
-        }
-        if(k==6){
-          seventh.innerHTML += dict[6].value[1] + ']';
-          break;
-        }
-        if(k==7){
-          eigth.innerHTML += dict[7].value[1] + ']';
-          break;
-        }
-      }
-    }
-}
-
-
-hideAll()
+console.log("BFS");
+g.bfs('A');
