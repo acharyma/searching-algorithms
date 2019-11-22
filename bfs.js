@@ -1,12 +1,6 @@
-var current_counter=1;
-var reveal_counter=2;
-var prepost = [];
+var reveal_counter=1;
 var i =1;
-
-for(i=1;i<10;i++){
-  prepost.push([i,0,0]);
-}
-console.log(prepost)
+var shapes=[];
 
 Raphael.fn.connection = function (obj1, obj2, line, bg) {
     if (obj1.line && obj1.from && obj1.to) {
@@ -67,6 +61,7 @@ Raphael.fn.connection = function (obj1, obj2, line, bg) {
 
 var el;
 window.onload = function () {
+  var clickMe = document.getElementById("button");
     var dragger = function () {
         console.log("hit");
         this.ox = this.type == "rect" ? this.attr("x") : this.attr("cx");
@@ -109,13 +104,45 @@ window.onload = function () {
         ];
 
     for (var i = 0, ii = shapes.length; i < ii; i++) {
-        var color = Raphael.getColor();
+        var color = "blue";
         shapes[i].attr({fill: color, stroke: color, "fill-opacity": 100, "stroke-width": 2});
     }
 
     for (var i = 0, ii = text.length; i<ii; i++){
         text[i].attr({fill:'#000000', "fill-opacity": 100});
     }
+
+    function reveal(){
+      console.log("HITT");
+      for (var i = 0, ii = shapes.length; i < ii; i++) {
+          if(reveal_counter==1 && i==3){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(reveal_counter==2 && i==0){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(reveal_counter==3 && i==1){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(reveal_counter==4 && i==2){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(reveal_counter==5 && i==5){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(reveal_counter==6 && i==6){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(reveal_counter==7 && i==7){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(reveal_counter==8 && i==8){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+      }
+      reveal_counter+=1;
+    }
+
 
     console.log(shapes)
     connections.push(r.connection(shapes[0], shapes[1], "#000"));
@@ -130,6 +157,9 @@ window.onload = function () {
     connections.push(r.connection(shapes[0], shapes[5], "#000"));
     connections.push(r.connection(shapes[5], shapes[8], "#000"));
     connections.push(r.connection(shapes[6], shapes[7], "#000"));
+    $(clickMe).click(function(){
+    reveal();
+    })
 };
 
 // Queue class
@@ -183,9 +213,6 @@ class Queue
         return str;
     }
 }
-
-
-
 
 
 // create a graph class
@@ -255,7 +282,7 @@ class Graph {
           var getQueueElement = q.dequeue();
 
           // passing the current vertex to callback funtion
-          console.log("HIT"+getQueueElement);
+          console.log(getQueueElement);
 
           // get the adjacent list for current vertex
           var get_List = this.AdjList.get(getQueueElement);
@@ -297,4 +324,4 @@ g.addEdge('7','8');
 
 g.printGraph();
 console.log("BFS");
-g.bfs('A');
+g.bfs('1');
