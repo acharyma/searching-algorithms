@@ -9,6 +9,7 @@ var less_smaller = [];
 var second_less_smaller = [];
 var counter = 1;
 var reveal_counter=1;
+var lookfor = 2;
 
 //Brute Force algorithm that finds the median of each subarray of max size 5.
 function bfFindMedian(array){
@@ -291,7 +292,7 @@ document.getElementById("compare-four").innerHTML = ("Splitting the array to fin
 document.getElementById("compare-four").style.textDecoration = "underline";
 document.getElementById("compare-six").innerHTML = ("If the size of the left array is equal to the rank we are searching for, then the pivot is returned (that is what we are searching for).<br/>Else if the length of the left array is less than the rank, then we run QuickSelect on the right array.<br/>Else if the length of the left array is greater than the rank, then we run QuickSelect on the left array");
 document.getElementById("compare-six").style.textDecoration = "underline";
-document.getElementById("found").innerHTML = ("FOUND! The second smallest element in the array is 2".bold());
+document.getElementById("found").innerHTML = ("FOUND! The second smallest element in the array is "+lookfor+"!");
 document.getElementById("found").style.fontWeight = 'bold';
 
 hideAll();

@@ -3,20 +3,91 @@ var table2 = document.getElementById("array_table_one");
 var table3 = document.getElementById("array_table_two");
 var table4 = document.getElementById("array_table_three");
 
+var hey = 0;
+var hard_count=0;
+
 var compare1 = document.getElementById("compare-one");
 var compare2 = document.getElementById("compare-two");
 var compare3 = document.getElementById("compare-three");
 var compare4 = document.getElementById("compare-four");
 
-var array = [1,2,3,4,5,6,7,8,9];
+var array = [];
 var arrays = [];
 var arrays_index=0;
 var mids=[];
-var val = 9;
+var val=[];
 
 var show=0;
 var where=1;
 var notFound=0;
+var finalArray=[];
+
+function sortNumber(a, b) {
+  return a - b;
+}
+
+
+function run(){
+  if(hard_count>0){
+    return;
+  }
+  console.log("ran");
+  finalArray= document.getElementById("array_field").value.split(',');
+  var result = finalArray.map(function (x) {
+    return parseInt(x, 10);
+  });
+  array=result.sort(sortNumber);
+  console.log(array);
+
+  if(array.length != 9){
+    alert("PLEASE ENTER A ARRAY OF SIZE 9");
+    return;
+  }
+
+  var search_for=[];
+
+
+  search_for = document.getElementById("search_field").value.split(',');
+  val=search_for[0];
+  
+  if(search_for.length!=1){
+    alert("PLEASE ENTER EXACTLY ONE VALUE TO SEARCH FOR");
+    return;
+  }
+
+
+  document.getElementById("search").style.display = "block";
+  document.getElementById("array_table_full").style.visibility="visible";
+  document.getElementById("compare-one").style.display = "block";
+
+  var answer = binary_search(array,0,8,val);
+  createTable();
+  console.log(arrays);
+  console.log(arrays.length);
+  console.log(mids);
+
+  document.getElementById("search").innerHTML = ("Looking for "+val+" in the array:".bold());
+  document.getElementById("search").style.fontWeight = 'bold';
+  document.getElementById("search").style.fontSize = 'xx-large';
+  document.getElementById("search").style.textDecoration = "overline";
+  document.getElementById("search").style.fontFamily = 'Impact,Charcoal,sans-serif';
+  document.getElementById("found").innerHTML = "The number "+val +" is FOUND at index: "+answer;
+  document.getElementById("found").style.fontWeight = 'bold';
+  document.getElementById("not-found").innerHTML = "The number "+val +" is NOT IN THE ARRAY!";
+  document.getElementById("not-found").style.fontWeight = 'bold';
+  hideSearch();
+  hard_count+=1;
+}
+
+function hideSearch(){
+  if(mids[0] == val){
+      document.getElementById("found").style.display = "block";
+  }
+  else if(mids[3] != val){
+      notFound = 1;
+  }
+  document.getElementById("found").style.display="none";
+}
 
 function binary_search(arr,min,max,value){
     addArrays(0,9);
@@ -104,11 +175,15 @@ function hideAll(){
     compare3.style.visibility = "hidden";
     compare4.style.visibility = "hidden";
     document.getElementById("found").style.display = "none";
+    document.getElementById("search").style.display = "none";
+    document.getElementById("array_table_full").style.visibility="hidden";
+    document.getElementById("compare-one").style.display = "none";
+
     document.getElementById("not-found").style.display = "none";
     if(mids[0] == val){
         document.getElementById("found").style.display = "block";
     }
-    else if(mids[3] != val){
+    else if(val==-1){
         notFound = 1;
     }
 }
@@ -133,6 +208,7 @@ function reveal(){
     console.log("show+1: "+(show+2))
     if(where == (show+2)){
         document.getElementById("found").style.display = "block";
+        hey=1;
     }
     if(notFound == 1 && (show+2)>4){
         document.getElementById("not-found").style.display = "block";
@@ -199,17 +275,4 @@ function createTable4(start,end){
     //DO STUFF
 }
 
-var answer = binary_search(array,0,8,val);
-createTable();
-console.log(arrays);
-console.log(arrays.length);
-console.log(mids);
 hideAll();
-
-document.getElementById("search").innerHTML = ("Looking for "+val+" in the array:".bold());
-document.getElementById("search").style.fontWeight = 'bold';
-document.getElementById("search").style.fontSize = 'xx-large';
-document.getElementById("search").style.textDecoration = "overline";
-document.getElementById("search").style.fontFamily = 'Impact,Charcoal,sans-serif';
-document.getElementById("found").innerHTML = "The number "+val +" is FOUND at index: "+answer;
-document.getElementById("not-found").innerHTML = "The number "+val +" is NOT IN THE ARRAY!";

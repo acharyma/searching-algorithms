@@ -6,7 +6,7 @@ var i =1;
 for(i=1;i<10;i++){
   prepost.push([i,0,0]);
 }
-console.log(prepost)
+console.log(prepost);
 
 Raphael.fn.connection = function (obj1, obj2, line, bg) {
     if (obj1.line && obj1.from && obj1.to) {
@@ -107,9 +107,8 @@ window.onload = function () {
                 r.text(500,200,"8",20,20),
                 r.text(300,350,"6",20,20)
         ];
-
+    var color = Raphael.getColor();
     for (var i = 0, ii = shapes.length; i < ii; i++) {
-        var color = Raphael.getColor();
         shapes[i].attr({fill: color, stroke: color, "fill-opacity": 100, "stroke-width": 2});
     }
 
