@@ -116,19 +116,19 @@ window.onload = function () {
       console.log("HITT");
       for (var i = 0, ii = shapes.length; i < ii; i++) {
           if(reveal_counter==1 && i==3){
-            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+            shapes[i].attr({fill: "red", stroke: "red", "fill-opacity": 100, "stroke-width": 2});
           }
           if(reveal_counter==2 && i==0){
-            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+            shapes[i].attr({fill: "orange", stroke: "orange", "fill-opacity": 100, "stroke-width": 2});
           }
           if(reveal_counter==3 && i==1){
-            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+            shapes[i].attr({fill: "orange", stroke: "orange", "fill-opacity": 100, "stroke-width": 2});
           }
           if(reveal_counter==4 && i==2){
-            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+            shapes[i].attr({fill: "yellow", stroke: "yellow", "fill-opacity": 100, "stroke-width": 2});
           }
           if(reveal_counter==5 && i==5){
-            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+            shapes[i].attr({fill: "yellow", stroke: "yellow", "fill-opacity": 100, "stroke-width": 2});
           }
           if(reveal_counter==6 && i==6){
             shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
@@ -137,7 +137,7 @@ window.onload = function () {
             shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
           }
           if(reveal_counter==8 && i==8){
-            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+            shapes[i].attr({fill: "purple", stroke: "purple", "fill-opacity": 100, "stroke-width": 2});
           }
       }
       reveal_counter+=1;
