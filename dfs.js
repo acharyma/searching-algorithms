@@ -1,5 +1,6 @@
 var current_counter=1;
-var reveal_counter=2;
+var reveal_counter=1;
+var last_counter=1;
 var prepost = [];
 var i =1;
 
@@ -67,6 +68,7 @@ Raphael.fn.connection = function (obj1, obj2, line, bg) {
 
 var el;
 window.onload = function () {
+  var clickMe = document.getElementById("button");
     var dragger = function () {
         console.log("hit");
         this.ox = this.type == "rect" ? this.attr("x") : this.attr("cx");
@@ -116,6 +118,65 @@ window.onload = function () {
         text[i].attr({fill:'#000000', "fill-opacity": 100});
     }
 
+    function reveal2(){
+      console.log("HITT "+last_counter);
+
+      console.log("HITT");
+      for (var i = 0, ii = shapes.length; i < ii; i++) {
+          if(last_counter==1 && i==3){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==2 && i==0){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==3 && i==1){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==4 && i==5){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==5 && i==2){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==6 && i==2){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==7 && i==8){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==8 && i==8){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==9 && i==5){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==10 && i==6){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==11 && i==7){
+            shapes[i].attr({fill: "green", stroke: "green", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==12 && i==7){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==13 && i==6){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==14 && i==1){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==15 && i==0){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+          if(last_counter==16 && i==3){
+            shapes[i].attr({fill: "blue", stroke: "blue", "fill-opacity": 100, "stroke-width": 2});
+          }
+      }
+
+
+      last_counter+=1;
+    }
+
     console.log(shapes)
     connections.push(r.connection(shapes[0], shapes[1], "#000"));
     connections.push(r.connection(shapes[1], shapes[2], "#000"));
@@ -129,6 +190,9 @@ window.onload = function () {
     connections.push(r.connection(shapes[0], shapes[5], "#000"));
     connections.push(r.connection(shapes[5], shapes[8], "#000"));
     connections.push(r.connection(shapes[6], shapes[7], "#000"));
+    $(clickMe).click(function(){
+      reveal2();
+    })
 };
 
 
@@ -333,6 +397,7 @@ function addPost(){
 }
 
 function reveal(){
+  if(reveal_counter==1){reveal_counter+=1;return;}
   for (k=0;k<8;k++){
       if(dict[k].value[0] == reveal_counter){
         reveal_counter++;
