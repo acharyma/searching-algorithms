@@ -49,7 +49,7 @@ function run(){
 
   search_for = document.getElementById("search_field").value.split(',');
   val=search_for[0];
-  
+
   if(search_for.length!=1){
     alert("PLEASE ENTER EXACTLY ONE VALUE TO SEARCH FOR");
     return;
@@ -197,11 +197,17 @@ function reveal(){
     else if(show==1){
         table3.style.visibility = "visible";
         compare3.style.visibility = "visible";
-        show+=1;
+        if(arrays[2].length == 1 && arrays[2] != val){
+          document.getElementById("not-found").style.display = "block";
+          show+=100;
+        }
+        else{
+          show+=1;
+        }
     }
     else if(show==2){
         table4.style.visibility = "visible";
-        compare4.style.visibility = "visible";
+        compare4.style.visibility="visible";
         show+=1;
     }
     console.log("where: "+where)
