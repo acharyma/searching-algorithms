@@ -469,4 +469,7 @@ function reveal(){
 }
 
 
-hideAll()
+hideAll();
+document.getElementById("description").innerHTML = ("This will display the order of traversing the graph using DFS.</br>Each node will turn Green when entered and Blue when exited... The pre and post time of each nodes are directly below:");
+document.getElementById("description").style.fontWeight = 'bold';
+document.getElementById("description").style.textDecoration = "overline";

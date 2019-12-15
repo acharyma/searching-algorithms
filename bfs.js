@@ -325,3 +325,7 @@ g.addEdge('7','8');
 g.printGraph();
 console.log("BFS");
 g.bfs('1');
+
+document.getElementById("description").innerHTML = ("This will display the order of traversing the graph using BFS, and the different colors reflect the different layer!:");
+document.getElementById("description").style.fontWeight = 'bold';
+document.getElementById("description").style.textDecoration = "overline";
