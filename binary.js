@@ -80,13 +80,13 @@ function run(){
 }
 
 function hideSearch(){
+  document.getElementById("found").style.display="none";
   if(mids[0] == val){
       document.getElementById("found").style.display = "block";
   }
   else if(mids[3] != val){
       notFound = 1;
   }
-  document.getElementById("found").style.display="none";
 }
 
 function binary_search(arr,min,max,value){
@@ -192,22 +192,31 @@ function reveal(){
     if(show == 0){
         table2.style.visibility = "visible";
         compare2.style.visibility = "visible";
+        if(val<arrays[1][0]){
+          show+=50;
+        }
         show+=1;
     }
     else if(show==1){
         table3.style.visibility = "visible";
         compare3.style.visibility = "visible";
-        if(arrays[2].length == 1 && arrays[2] != val){
+        if(arrays[2].length == 1 && arrays[2][0] != val){
           document.getElementById("not-found").style.display = "block";
           show+=100;
         }
         else{
           show+=1;
         }
+        if(val<arrays[2][0]){
+          show+=50;
+        }
     }
     else if(show==2){
         table4.style.visibility = "visible";
         compare4.style.visibility="visible";
+        if(val<arrays[3][0]){
+          show+=50;
+        }
         show+=1;
     }
     console.log("where: "+where)
