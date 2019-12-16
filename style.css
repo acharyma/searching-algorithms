@@ -1,12 +1,54 @@
 .table-array{
-    width: 450px;
+    width: 500px;
+    margin-left: 50px;
+}
+.form-control{
+    width: 500px;
 }
 .table-array-one{
     width: 200px;
+    margin-left: 50px;
 }
 .table-array-two{
     width: 100px;
+    margin-left: 50px;
 }
 .table-array-three{
     width:50px;
+    margin-left: 50px;
+}
+
+.compare-one{
+  margin-left: 50px;
+}
+.compare-two{
+  margin-left: 50px;
+}
+.compare-three{
+  margin-left: 50px;
+}
+
+body {
+    background-color:lightblue;
+    font: 300 100.1% "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
+}
+
+#holder {
+    height: 480px;
+    left: 50%;
+    margin: -240px 0 0 -320px;
+    position: absolute;
+    top: 50%;
+    width: 640px;
+    background-color: blue;
+}
+#copy {
+    bottom: 0;
+    font: 300 .7em "Helvetica Neue", Helvetica, "Arial Unicode MS", Arial, sans-serif;
+    position: absolute;
+    right: 1em;
+    text-align: right;
+}
+#copy a {
+    color: lightblue;
 }
