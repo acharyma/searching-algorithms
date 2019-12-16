@@ -192,7 +192,7 @@ function reveal(){
     if(show == 0){
         table2.style.visibility = "visible";
         compare2.style.visibility = "visible";
-        if(val<arrays[1][0]){
+        if(val<arrays[0][0]){
           show+=50;
         }
         show+=1;
@@ -207,14 +207,14 @@ function reveal(){
         else{
           show+=1;
         }
-        if(val<arrays[2][0]){
+        if(val<arrays[1][0]){
           show+=50;
         }
     }
     else if(show==2){
         table4.style.visibility = "visible";
         compare4.style.visibility="visible";
-        if(val<arrays[3][0]){
+        if(val<arrays[2][0]){
           show+=50;
         }
         show+=1;
