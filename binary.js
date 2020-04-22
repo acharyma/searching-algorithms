@@ -3,6 +3,8 @@ var table2 = document.getElementById("array_table_one");
 var table3 = document.getElementById("array_table_two");
 var table4 = document.getElementById("array_table_three");
 
+console.log("WHAT's UP");
+
 var hey = 0;
 var hard_count=0;
 
